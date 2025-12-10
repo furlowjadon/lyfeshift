@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - Lyfe Shift Community</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #9B7EDE;
+            --secondary-color: #C8B5E8;
+            --accent-color: #E6D9F7;
+            --text-dark: #4A4458;
+            --text-light: #8B7FA3;
+            --white: #FFFFFF;
+            --light-bg: #FDFCFF;
+            --gradient-primary: linear-gradient(135deg, #9B7EDE 0%, #B8A9D9 100%);
+            --gradient-gold: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            --gold-accent: #D4AF37;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-bg);
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .dashboard-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        
+        .dashboard-subtitle {
+            color: var(--text-light);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+        
+        .status-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .status-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .status-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .status-card.winner {
+            background: var(--gradient-gold);
+            color: white;
+        }
+        
+        .status-card.winner .card-icon {
+            color: white;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .card-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .card-content {
+            line-height: 1.6;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-completed {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .winner-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            display: none;
+        }
+        
+        .winner-section.show {
+            display: block;
+        }
+        
+        .winner-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .winner-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .winner-subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        .winner-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .action-card {
+            background: var(--light-bg);
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .action-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .action-card.completed {
+            border-color: #27ae60;
+            background: #f8fff9;
+        }
+        
+        .action-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .action-card.completed .action-icon {
+            color: #27ae60;
+        }
+        
+        .action-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .action-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .btn.completed {
+            background: #27ae60;
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .account-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .account-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .info-item {
+            padding: 15px;
+            background: var(--light-bg);
+            border-radius: 10px;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            color: var(--text-dark);
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .user-menu {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .dashboard-title {
+                font-size: 2rem;
+            }
+            
+            .status-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .winner-actions {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">🏋️‍♂️ Lyfe Shift</div>
+            <div class="user-menu">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <div id="userName">Loading...</div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;" id="userEmail">Loading...</div>
+                    </div>
+                </div>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h1 class="dashboard-title">Welcome Back!</h1>
+        <p class="dashboard-subtitle">Track your competition status and manage your account</p>
+        
+        <div class="status-cards">
+            <div class="status-card" id="competitionCard">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="card-title">Competition Status</div>
+                </div>
+                <div class="card-content">
+                    <p>You're participating in the current Lyfe Shift challenge!</p>
+                    <div class="status-badge status-active">Active Participant</div>
+                </div>
+            </div>
+            
+            <div class="status-card" id="winnerCard">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="card-title">Winner Status</div>
+                </div>
+                <div class="card-content">
+                    <p id="winnerStatus">Competition results pending...</p>
+                    <div class="status-badge status-pending" id="winnerBadge">Pending</div>
+                </div>
+            </div>
+            
+            <div class="status-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card-title">Community</div>
+                </div>
+                <div class="card-content">
+                    <p>Connect with thousands of fitness enthusiasts worldwide.</p>
+                    <div class="status-badge status-active">Member Since <span id="memberSince">2024</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Winner Section (Hidden by default) -->
+        <div class="winner-section" id="winnerSection">
+            <div class="winner-header">
+                <h2 class="winner-title">🎉 Congratulations, Winner! 🎉</h2>
+                <p class="winner-subtitle">You've been selected as one of our top performers! Complete the steps below to claim your reward.</p>
+            </div>
+            
+            <div class="winner-actions">
+                <div class="action-card" id="proofCard">
+                    <div class="action-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="action-title">Submit Proof</div>
+                    <div class="action-description">Upload your fitness progress photos and verification</div>
+                    <a href="rewards-shipping.html#proof-section" class="btn" id="proofBtn">
+                        <i class="fas fa-upload"></i> Submit Proof
+                    </a>
+                </div>
+                
+                <div class="action-card" id="shippingCard">
+                    <div class="action-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div class="action-title">Shipping Info</div>
+                    <div class="action-description">Provide your address for reward delivery</div>
+                    <a href="rewards-shipping.html#shipping-section" class="btn" id="shippingBtn">
+                        <i class="fas fa-map-marker-alt"></i> Add Address
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Account Information -->
+        <div class="account-section">
+            <h2 class="section-title">
+                <i class="fas fa-user-cog"></i>
+                Account Information
+            </h2>
+            
+            <div class="account-info">
+                <div class="info-item">
+                    <div class="info-label">Full Name</div>
+                    <div class="info-value" id="accountName">Loading...</div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">Email Address</div>
+                    <div class="info-value" id="accountEmail">Loading...</div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">App Username</div>
+                    <div class="info-value" id="accountUsername">Loading...</div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">Member Since</div>
+                    <div class="info-value" id="accountCreated">Loading...</div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">Account Status</div>
+                    <div class="info-value">
+                        <span class="status-badge status-active">Active</span>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">Email Updates</div>
+                    <div class="info-value" id="emailUpdates">Loading...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Check authentication
+        function checkAuth() {
+            const session = localStorage.getItem('lyfeshift_session') || sessionStorage.getItem('lyfeshift_session');
+            if (!session) {
+                window.location.href = 'login.html';
+                return null;
+            }
+            return JSON.parse(session);
+        }
+        
+        // Load user data
+        function loadUserData() {
+            const session = checkAuth();
+            if (!session) return;
+            
+            const users = JSON.parse(localStorage.getItem('lyfeshift_users') || '[]');
+            const user = users.find(u => u.id === session.userId);
+            
+            if (!user) {
+                logout();
+                return;
+            }
+            
+            // Update header
+            document.getElementById('userName').textContent = user.fullName;
+            document.getElementById('userEmail').textContent = user.email;
+            
+            // Update account info
+            document.getElementById('accountName').textContent = user.fullName;
+            document.getElementById('accountEmail').textContent = user.email;
+            document.getElementById('accountUsername').textContent = user.username;
+            document.getElementById('accountCreated').textContent = new Date(user.createdAt).toLocaleDateString();
+            document.getElementById('emailUpdates').textContent = user.emailUpdates ? 'Enabled' : 'Disabled';
+            document.getElementById('memberSince').textContent = new Date(user.createdAt).getFullYear();
+            
+            // Check winner status
+            updateWinnerStatus(user);
+            
+            return user;
+        }
+        
+        // Update winner status
+        function updateWinnerStatus(user) {
+            const winnerCard = document.getElementById('winnerCard');
+            const winnerSection = document.getElementById('winnerSection');
+            const winnerStatus = document.getElementById('winnerStatus');
+            const winnerBadge = document.getElementById('winnerBadge');
+            
+            if (user.isWinner) {
+                // Update winner card
+                winnerCard.classList.add('winner');
+                winnerStatus.textContent = 'Congratulations! You are a competition winner!';
+                winnerBadge.textContent = 'Winner';
+                winnerBadge.className = 'status-badge status-completed';
+                
+                // Show winner section
+                winnerSection.classList.add('show');
+                
+                // Update action cards based on completion status
+                updateActionCards(user);
+            } else {
+                winnerStatus.textContent = 'Competition results pending...';
+                winnerBadge.textContent = 'Pending';
+                winnerBadge.className = 'status-badge status-pending';
+            }
+        }
+        
+        // Update action cards
+        function updateActionCards(user) {
+            const proofCard = document.getElementById('proofCard');
+            const shippingCard = document.getElementById('shippingCard');
+            const proofBtn = document.getElementById('proofBtn');
+            const shippingBtn = document.getElementById('shippingBtn');
+            
+            // Check proof submission status
+            if (user.hasSubmittedProof) {
+                proofCard.classList.add('completed');
+                proofBtn.innerHTML = '<i class="fas fa-check"></i> Proof Submitted';
+                proofBtn.classList.add('completed');
+            }
+            
+            // Check shipping info status
+            if (user.hasSubmittedShipping) {
+                shippingCard.classList.add('completed');
+                shippingBtn.innerHTML = '<i class="fas fa-check"></i> Address Submitted';
+                shippingBtn.classList.add('completed');
+            }
+            
+            // Disable shipping button if proof not submitted
+            if (!user.hasSubmittedProof) {
+                shippingBtn.disabled = true;
+                shippingBtn.innerHTML = '<i class="fas fa-lock"></i> Submit Proof First';
+                shippingBtn.style.opacity = '0.6';
+            }
+        }
+        
+        // Logout function
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('lyfeshift_session');
+                sessionStorage.removeItem('lyfeshift_session');
+                window.location.href = 'login.html';
+            }
+        }
+        
+        // Initialize dashboard
+        window.addEventListener('load', function() {
+            loadUserData();
+            
+            // Refresh data every 30 seconds to check for updates
+            setInterval(loadUserData, 30000);
+        });
+        
+        // Handle visibility change to refresh data when tab becomes active
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                loadUserData();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Lyfe Shift Community</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #9B7EDE;
+            --secondary-color: #C8B5E8;
+            --accent-color: #E6D9F7;
+            --text-dark: #4A4458;
+            --text-light: #8B7FA3;
+            --white: #FFFFFF;
+            --light-bg: #FDFCFF;
+            --gradient-primary: linear-gradient(135deg, #9B7EDE 0%, #B8A9D9 100%);
+            --gradient-gold: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            --gold-accent: #D4AF37;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--gradient-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow-hover);
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-gold);
+        }
+        
+        .logo-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .welcome-text {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        .form-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(155, 126, 222, 0.1);
+        }
+        
+        .form-input.error {
+            border-color: #e74c3c;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 25px;
+        }
+        
+        .forgot-password a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        
+        .btn {
+            width: 100%;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+            color: var(--text-light);
+        }
+        
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e0e0e0;
+        }
+        
+        .divider span {
+            background: white;
+            padding: 0 15px;
+        }
+        
+        .signup-link {
+            text-align: center;
+            color: var(--text-light);
+        }
+        
+        .signup-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            padding: 10px 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .back-home:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .remember-me input {
+            margin: 0;
+        }
+        
+        .remember-me label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .back-home {
+                position: static;
+                display: inline-block;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+    
+    <div class="login-container">
+        <div class="logo-section">
+            <div class="logo">🏋️‍♂️ Lyfe Shift</div>
+            <p class="welcome-text">Welcome back, champion!</p>
+        </div>
+        
+        <h2 class="form-title">Sign In</h2>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label class="form-label">Email or Username</label>
+                <input type="text" class="form-input" id="loginField" placeholder="Enter your email or username" required>
+                <div class="error-message" id="loginFieldError">Please enter your email or username</div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-input" id="password" placeholder="Enter your password" required>
+                <div class="error-message" id="passwordError">Please enter your password</div>
+            </div>
+            
+            <div class="remember-me">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Remember me</label>
+            </div>
+            
+            <div class="forgot-password">
+                <a href="#" onclick="showForgotPassword()">Forgot your password?</a>
+            </div>
+            
+            <button type="submit" class="btn" id="loginBtn">
+                <i class="fas fa-sign-in-alt"></i> Sign In
+            </button>
+        </form>
+        
+        <div class="divider">
+            <span>Don't have an account?</span>
+        </div>
+        
+        <div class="signup-link">
+            <a href="signup.html">Create your account</a>
+        </div>
+    </div>
+    
+    <script>
+        // Form validation and submission
+        const form = document.getElementById('loginForm');
+        const loginField = document.getElementById('loginField');
+        const passwordField = document.getElementById('password');
+        
+        // Clear errors on input
+        loginField.addEventListener('input', () => clearError('loginField'));
+        passwordField.addEventListener('input', () => clearError('password'));
+        
+        function clearError(fieldId) {
+            const field = document.getElementById(fieldId);
+            const errorElement = document.getElementById(fieldId + 'Error');
+            field.classList.remove('error');
+            if (errorElement) {
+                errorElement.style.display = 'none';
+            }
+        }
+        
+        function showError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const errorElement = document.getElementById(fieldId + 'Error');
+            field.classList.add('error');
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+        }
+        
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const loginValue = loginField.value.trim();
+            const password = passwordField.value;
+            
+            // Clear previous errors
+            clearError('loginField');
+            clearError('password');
+            
+            // Basic validation
+            if (!loginValue) {
+                showError('loginField', 'Please enter your email or username');
+                return;
+            }
+            
+            if (!password) {
+                showError('password', 'Please enter your password');
+                return;
+            }
+            
+            // Check credentials
+            const users = JSON.parse(localStorage.getItem('lyfeshift_users') || '[]');
+            const user = users.find(u => 
+                u.email.toLowerCase() === loginValue.toLowerCase() || 
+                u.username.toLowerCase() === loginValue.toLowerCase()
+            );
+            
+            if (!user) {
+                showError('loginField', 'Account not found');
+                return;
+            }
+            
+            if (user.password !== password) {
+                showError('password', 'Incorrect password');
+                return;
+            }
+            
+            // Successful login
+            const loginData = {
+                userId: user.id,
+                email: user.email,
+                username: user.username,
+                fullName: user.fullName,
+                loginTime: new Date().toISOString(),
+                rememberMe: document.getElementById('rememberMe').checked
+            };
+            
+            // Store login session
+            if (loginData.rememberMe) {
+                localStorage.setItem('lyfeshift_session', JSON.stringify(loginData));
+            } else {
+                sessionStorage.setItem('lyfeshift_session', JSON.stringify(loginData));
+            }
+            
+            // Show success and redirect
+            showSuccessMessage();
+            
+            setTimeout(() => {
+                // Check if user is a winner and redirect accordingly
+                if (user.isWinner) {
+                    window.location.href = 'rewards-shipping.html';
+                } else {
+                    window.location.href = 'user-dashboard.html';
+                }
+            }, 1500);
+        });
+        
+        function showSuccessMessage() {
+            const btn = document.getElementById('loginBtn');
+            btn.innerHTML = '<i class="fas fa-check"></i> Welcome Back!';
+            btn.style.background = '#27ae60';
+            btn.disabled = true;
+        }
+        
+        function showForgotPassword() {
+            const email = prompt('Enter your email address to reset your password:');
+            if (email) {
+                const users = JSON.parse(localStorage.getItem('lyfeshift_users') || '[]');
+                const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+                
+                if (user) {
+                    alert('Password reset instructions have been sent to your email address.');
+                    // In a real app, you would send an actual email
+                } else {
+                    alert('No account found with that email address.');
+                }
+            }
+        }
+        
+        // Check if user is already logged in
+        window.addEventListener('load', function() {
+            const session = localStorage.getItem('lyfeshift_session') || sessionStorage.getItem('lyfeshift_session');
+            if (session) {
+                const sessionData = JSON.parse(session);
+                // Auto-redirect if already logged in
+                window.location.href = 'user-dashboard.html';
+            }
+        });
+    </script>
+</body>
+</html>
