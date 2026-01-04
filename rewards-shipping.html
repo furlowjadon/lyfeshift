@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winner Journey - Lyfe Shift</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #9B7EDE;
+            --secondary-color: #C8B5E8;
+            --accent-color: #E6D9F7;
+            --text-dark: #4A4458;
+            --text-light: #8B7FA3;
+            --white: #FFFFFF;
+            --light-bg: #FDFCFF;
+            --gradient-primary: linear-gradient(135deg, #9B7EDE 0%, #B8A9D9 100%);
+            --gradient-gold: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            --gold-accent: #D4AF37;
+            --gold-light: #F7E98E;
+            --gold-dark: #B8860B;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --shadow-gold: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+        
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-bg);
+        }
+        
+        /* Hero Celebration Section */
+        .celebration-hero {
+            background: var(--gradient-primary);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .celebration-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="20">🎉</text></svg>') repeat;
+            animation: float 20s infinite linear;
+            opacity: 0.1;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .trophy-animation {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+        
+        .celebration-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .celebration-hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .winner-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: 2px solid var(--gold-light);
+            display: inline-block;
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Journey Timeline */
+        .journey-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 50px;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-primary);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 40px;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 40px;
+            text-align: left;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border-top: 3px solid var(--gold-accent);
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+            border-left-color: white;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+            border-right-color: white;
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 0 0 4px white, var(--shadow);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--gradient-gold);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        
+        .timeline-description {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+        
+        .timeline-details {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .timeline-details li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .timeline-details i {
+            color: var(--primary-color);
+            width: 16px;
+        }
+        
+        /* Forms Section */
+        .forms-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+        
+        .forms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .form-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border-top: 3px solid var(--gold-accent);
+        }
+        
+        .form-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            font-family: var(--font-body);
+        }
+        
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .file-upload {
+            border: 3px dashed var(--primary-color);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            background: #fafafa;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .file-upload:hover {
+            background: #f0f0f0;
+            border-color: var(--gold-accent);
+        }
+        
+        .file-upload.dragover {
+            background: #e8f4fd;
+            border-color: #007bff;
+        }
+        
+        .upload-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-secondary {
+            background: var(--gradient-gold);
+        }
+        
+        /* Status Tracker */
+        .status-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .status-tracker {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+        
+        .status-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .status-steps::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #e0e0e0;
+            z-index: 1;
+        }
+        
+        .status-step {
+            background: white;
+            border: 4px solid #e0e0e0;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .status-step.completed {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .status-step.active {
+            border-color: var(--gold-accent);
+            background: var(--gold-accent);
+            color: white;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+        
+        .status-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .status-label {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        /* Back to Home */
+        .back-section {
+            padding: 40px 0;
+            text-align: center;
+            background: var(--light-bg);
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .celebration-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 80px !important;
+                padding-right: 20px !important;
+                text-align: left !important;
+            }
+            
+            .timeline-icon {
+                left: 30px !important;
+                transform: none !important;
+            }
+            
+            .timeline-content::after {
+                display: none;
+            }
+            
+            .forms-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .status-steps {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .status-steps::before {
+                display: none;
+            }
+            
+            .status-labels {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Celebration Hero -->
+    <section class="celebration-hero">
+        <div class="container">
+            <div class="trophy-animation">🏆</div>
+            <h1>Congratulations, Champion!</h1>
+            <p>You've earned your place among the elite Lyfe Shift winners!</p>
+            <div class="winner-badge">
+                <i class="fas fa-medal"></i> Official Winner
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Timeline -->
+    <section class="journey-section">
+        <div class="container">
+            <h2 class="section-title">Your Winner Journey</h2>
+            <p class="section-subtitle">Follow these simple steps to claim your well-deserved reward</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-camera"></i>
+                        <div class="step-number">1</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Submit Proof</h3>
+                        <p class="timeline-description">Upload screenshots showing your final ranking and app profile</p>
+                        <ul class="timeline-details">
+                            <li><i class="fas fa-check"></i> Leaderboard screenshot</li>
+                            <li><i class="fas fa-check"></i> Profile verification</li>
+                            <li><i class="fas fa-check"></i> Workout completion proof</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-address-card"></i>
+                        <div class="step-number">2</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Shipping Information</h3>
+                        <p class="timeline-description">Provide your complete delivery details and preferences</p>
+                        <ul class="timeline-details">
+                            <li><i class="fas fa-check"></i> Full name and address</li>
+                            <li><i class="fas fa-check"></i> Contact information</li>
+                            <li><i class="fas fa-check"></i> Size preferences</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-user-check"></i>
+                        <div class="step-number">3</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Verification</h3>
+                        <p class="timeline-description">We'll verify your submission and confirm your reward</p>
+                        <ul class="timeline-details">
+                            <li><i class="fas fa-check"></i> 1-2 business days</li>
+                            <li><i class="fas fa-check"></i> Email confirmation</li>
+                            <li><i class="fas fa-check"></i> Tracking information</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-gift"></i>
+                        <div class="step-number">4</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Receive Your Reward</h3>
+                        <p class="timeline-description">Your prize will be shipped directly to your address</p>
+                        <ul class="timeline-details">
+                            <li><i class="fas fa-check"></i> Free worldwide shipping</li>
+                            <li><i class="fas fa-check"></i> Full tracking provided</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forms Section -->
+    <section class="forms-section">
+        <div class="container">
+            <h2 class="section-title">Submit Your Information</h2>
+            <p class="section-subtitle">Complete both forms below to claim your reward</p>
+            
+            <div class="forms-grid">
+                <!-- Proof Submission Form -->
+                <div class="form-card">
+                    <h3><i class="fas fa-camera"></i> Proof Submission</h3>
+                    <form id="proofForm">
+                        <!-- Ranking position field removed -->
+                        
+                        <div class="form-group">
+                            <label class="form-label">App Username/Profile</label>
+                            <input type="text" class="form-input" id="username" placeholder="Your app username" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Upload Screenshots</label>
+                            <div class="file-upload" onclick="document.getElementById('proofFiles').click()">
+                                <div class="upload-icon">📸</div>
+                                <div>Click to upload or drag and drop</div>
+                                <div style="font-size: 0.9rem; color: #666; margin-top: 5px;">PNG, JPG files</div>
+                            </div>
+                            <input type="file" id="proofFiles" multiple accept="image/*" style="display: none;">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Additional Notes</label>
+                            <textarea class="form-textarea" id="proofNotes" placeholder="Any additional information about your submission..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">
+                            <i class="fas fa-upload"></i> Submit Proof
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Shipping Information Form -->
+                <div class="form-card">
+                    <h3><i class="fas fa-shipping-fast"></i> Shipping Information</h3>
+                    <form id="shippingForm">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-input" id="fullName" placeholder="Your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" id="email" placeholder="your@email.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-input" id="phone" placeholder="Your phone number" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Street Address</label>
+                            <input type="text" class="form-input" id="address" placeholder="123 Main Street" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">City</label>
+                            <input type="text" class="form-input" id="city" placeholder="Your city" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">State/Province</label>
+                            <input type="text" class="form-input" id="state" placeholder="State or Province" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">ZIP/Postal Code</label>
+                            <input type="text" class="form-input" id="zip" placeholder="ZIP or Postal Code" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Country</label>
+                            <input type="text" class="form-input" id="country" placeholder="Your country" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Size Preferences (if applicable)</label>
+                            <select class="form-select" id="size">
+                                <option value="">Select size</option>
+                                <option value="XS">Extra Small (XS)</option>
+                                <option value="S">Small (S)</option>
+                                <option value="M">Medium (M)</option>
+                                <option value="L">Large (L)</option>
+                                <option value="XL">Extra Large (XL)</option>
+                                <option value="XXL">2X Large (XXL)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Special Delivery Instructions</label>
+                            <textarea class="form-textarea" id="instructions" placeholder="Any special delivery instructions..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-secondary">
+                            <i class="fas fa-truck"></i> Submit Shipping Info
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Status Tracker -->
+    <section class="status-section">
+        <div class="container">
+            <h2 class="section-title">Track Your Progress</h2>
+            <p class="section-subtitle">See where you are in the winner process</p>
+            
+            <div class="status-tracker">
+                <div class="status-steps">
+                    <div class="status-step active" id="step1">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                    <div class="status-step" id="step2">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="status-step" id="step3">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="status-step" id="step4">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                </div>
+                <div class="status-labels">
+                    <div class="status-label">Submit Info</div>
+                    <div class="status-label">Verification</div>
+                    <div class="status-label">Processing</div>
+                    <div class="status-label">Delivered</div>
+                </div>
+                <div style="text-align: center; margin-top: 30px; padding: 20px; background: white; border-radius: 10px;">
+                    <h4 style="color: var(--text-dark); margin-bottom: 10px;">Current Status</h4>
+                    <p id="statusMessage" style="color: var(--text-light);">Waiting for your submission...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Home -->
+    <section class="back-section">
+        <div class="container">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Check if user is logged in and is a winner
+        let currentUser = null;
+        let userSession = null;
+
+        // Initialize user session
+        function initializeUserSession() {
+            const sessionData = localStorage.getItem('lyfeshift_session') || sessionStorage.getItem('lyfeshift_session');
+            
+            if (!sessionData) {
+                // Redirect to login if no session
+                alert('Please log in to access the winner rewards page.');
+                window.location.href = 'login.html';
+                return false;
+            }
+            
+            userSession = JSON.parse(sessionData);
+            
+            // Get user data from users storage
+            const users = JSON.parse(localStorage.getItem('lyfeshift_users') || '[]');
+            currentUser = users.find(u => u.id === userSession.userId);
+            
+            if (!currentUser) {
+                alert('User account not found. Please log in again.');
+                window.location.href = 'login.html';
+                return false;
+            }
+            
+            if (!currentUser.isWinner) {
+                alert('This page is only accessible to competition winners.');
+                window.location.href = 'user-dashboard.html';
+                return false;
+            }
+            
+            return true;
+        }
+
+        // Form handling and status updates
+        let proofSubmitted = false;
+        let shippingSubmitted = false;
+        let currentSubmissionId = currentUser ? currentUser.id : generateSubmissionId();
+
+        function generateSubmissionId() {
+            const id = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('current_submission_id', id);
+            return id;
+        }
+
+        // Get existing submissions
+        function getSubmissions() {
+            return JSON.parse(localStorage.getItem('lyfeshift_winner_submissions') || '[]');
+        }
+
+        // Save submission data
+        function saveSubmissionData(data) {
+            let submissions = getSubmissions();
+            let existingIndex = submissions.findIndex(s => s.id === currentSubmissionId);
+            
+            if (existingIndex >= 0) {
+                // Update existing submission
+                submissions[existingIndex] = { ...submissions[existingIndex], ...data };
+            } else {
+                // Create new submission
+                submissions.unshift({
+                    id: currentSubmissionId,
+                    submissionDate: new Date().toISOString(),
+                    proofSubmitted: false,
+                    shippingSubmitted: false,
+                    ...data
+                });
+            }
+            
+            localStorage.setItem('lyfeshift_winner_submissions', JSON.stringify(submissions));
+        }
+
+        // Proof form submission
+        document.getElementById('proofForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const proofData = {
+                username: document.getElementById('username').value,
+                proofNotes: document.getElementById('proofNotes').value,
+                proofFiles: document.getElementById('proofFiles').files.length,
+                proofSubmitted: true
+            };
+            
+            // Save to localStorage for admin dashboard
+            saveSubmissionData(proofData);
+            
+            proofSubmitted = true;
+            updateStatus();
+            updateUserAccountStatus();
+            
+            // Update button appearance
+            const proofBtn = document.querySelector('#proofForm .btn');
+            proofBtn.innerHTML = '<i class="fas fa-check"></i> Proof Submitted Successfully';
+            proofBtn.style.background = '#28a745';
+            proofBtn.disabled = true;
+            
+            // Show success message
+            showNotification('Proof submitted successfully! We\'ll verify your information within 1-2 business days.');
+            
+            console.log('Proof form submitted:', proofData);
+        });
+
+        // Shipping form submission
+        document.getElementById('shippingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const shippingData = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                zip: document.getElementById('zip').value,
+                country: document.getElementById('country').value,
+                size: document.getElementById('size').value,
+                instructions: document.getElementById('instructions').value,
+                shippingSubmitted: true
+            };
+            
+            // Save to localStorage for admin dashboard
+            saveSubmissionData(shippingData);
+            
+            shippingSubmitted = true;
+            updateStatus();
+            updateUserAccountStatus();
+            
+            // Update button appearance
+            const shippingBtn = document.querySelector('#shippingForm .btn');
+            shippingBtn.innerHTML = '<i class="fas fa-check"></i> Shipping Info Submitted Successfully';
+            shippingBtn.style.background = '#28a745';
+            shippingBtn.disabled = true;
+            
+            // Show success message
+            showNotification('Shipping information submitted successfully! You\'ll receive tracking information once your reward ships.');
+            
+            console.log('Shipping form submitted:', shippingData);
+        });
+
+        // Update status tracker
+        function updateStatus() {
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const statusMessage = document.getElementById('statusMessage');
+            
+            if (proofSubmitted && shippingSubmitted) {
+                step1.classList.remove('active');
+                step1.classList.add('completed');
+                step2.classList.add('active');
+                statusMessage.textContent = 'Information received! We\'re verifying your submission...';
+            } else if (proofSubmitted || shippingSubmitted) {
+                statusMessage.textContent = 'Partial submission received. Please complete both forms.';
+            }
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #d4edda;
+                color: #155724;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                z-index: 1000;
+                font-weight: 600;
+                max-width: 300px;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+
+        // File upload handling
+        document.getElementById('proofFiles').addEventListener('change', function(e) {
+            const files = e.target.files;
+            const uploadArea = document.querySelector('.file-upload');
+            
+            if (files.length > 0) {
+                uploadArea.innerHTML = `
+                    <div class="upload-icon">✅</div>
+                    <div>${files.length} file(s) selected</div>
+                    <div style="font-size: 0.9rem; color: #666; margin-top: 5px;">Click to change files</div>
+                `;
+            }
+        });
+
+        // Auto-populate user information
+        function populateUserInfo() {
+            if (currentUser) {
+                // Auto-populate shipping form with user account information
+                document.getElementById('fullName').value = currentUser.fullName || '';
+                document.getElementById('email').value = currentUser.email || '';
+                
+                // Update hero section with user's name
+                const heroTitle = document.querySelector('.celebration-hero h1');
+                if (heroTitle && currentUser.fullName) {
+                    heroTitle.textContent = `Congratulations, ${currentUser.fullName.split(' ')[0]}!`;
+                }
+            }
+        }
+
+        // Load existing submission data
+        function loadExistingSubmission() {
+            const submissions = getSubmissions();
+            const existingSubmission = submissions.find(s => s.id === currentSubmissionId);
+            
+            if (existingSubmission) {
+                // Update status based on existing submission
+                proofSubmitted = existingSubmission.proofSubmitted || false;
+                shippingSubmitted = existingSubmission.shippingSubmitted || false;
+                
+                // Pre-populate forms if data exists
+                if (existingSubmission.username) {
+                    document.getElementById('username').value = existingSubmission.username;
+                }
+                
+                if (existingSubmission.proofNotes) {
+                    document.getElementById('proofNotes').value = existingSubmission.proofNotes;
+                }
+                
+                // Pre-populate shipping form
+                if (existingSubmission.fullName) document.getElementById('fullName').value = existingSubmission.fullName;
+                if (existingSubmission.email) document.getElementById('email').value = existingSubmission.email;
+                if (existingSubmission.phone) document.getElementById('phone').value = existingSubmission.phone;
+                if (existingSubmission.address) document.getElementById('address').value = existingSubmission.address;
+                if (existingSubmission.city) document.getElementById('city').value = existingSubmission.city;
+                if (existingSubmission.state) document.getElementById('state').value = existingSubmission.state;
+                if (existingSubmission.zip) document.getElementById('zip').value = existingSubmission.zip;
+                if (existingSubmission.country) document.getElementById('country').value = existingSubmission.country;
+                if (existingSubmission.size) document.getElementById('size').value = existingSubmission.size;
+                if (existingSubmission.instructions) document.getElementById('instructions').value = existingSubmission.instructions;
+                
+                // Update status tracker
+                updateStatus();
+                
+                // Update form buttons if already submitted
+                if (proofSubmitted) {
+                    const proofBtn = document.querySelector('#proofForm .btn');
+                    proofBtn.innerHTML = '<i class="fas fa-check"></i> Proof Already Submitted';
+                    proofBtn.style.background = '#28a745';
+                }
+                
+                if (shippingSubmitted) {
+                    const shippingBtn = document.querySelector('#shippingForm .btn');
+                    shippingBtn.innerHTML = '<i class="fas fa-check"></i> Shipping Info Already Submitted';
+                    shippingBtn.style.background = '#28a745';
+                }
+            }
+        }
+
+        // Update user account submission status
+        function updateUserAccountStatus() {
+            if (currentUser) {
+                const users = JSON.parse(localStorage.getItem('lyfeshift_users') || '[]');
+                const userIndex = users.findIndex(u => u.id === currentUser.id);
+                
+                if (userIndex >= 0) {
+                    users[userIndex].hasSubmittedProof = proofSubmitted;
+                    users[userIndex].hasSubmittedShipping = shippingSubmitted;
+                    localStorage.setItem('lyfeshift_users', JSON.stringify(users));
+                }
+            }
+        }
+
+        // Initialize page when DOM loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check authentication and winner status
+            if (!initializeUserSession()) {
+                return; // Exit if authentication fails
+            }
+            
+            // Set submission ID to user ID for tracking
+            currentSubmissionId = currentUser.id;
+            
+            // Populate user information
+            populateUserInfo();
+            
+            // Load any existing submission data
+            loadExistingSubmission();
+        });
+
+        // Add CSS for notification animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
