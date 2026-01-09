@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyfe Shift Community - Transform Together</title>
+    <meta name="description" content="Join the Lyfe Shift community fitness challenge! Track workouts, earn rewards, and transform your health with thousands of motivated members.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #9B7EDE;
+            --secondary-color: #C8B5E8;
+            --accent-color: #E6D9F7;
+            --text-dark: #4A4458;
+            --text-light: #8B7FA3;
+            --white: #FFFFFF;
+            --light-bg: #FDFCFF;
+            --gradient-primary: linear-gradient(135deg, #9B7EDE 0%, #B8A9D9 100%);
+            --gradient-gold: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            --gold-accent: #D4AF37;
+            --gold-light: #F7E98E;
+            --gold-dark: #B8860B;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --shadow-gold: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+        
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            border-bottom: 2px solid var(--gold-accent);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            background: var(--gradient-primary);
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 8px;
+            border: 2px solid var(--gold-accent);
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--gold-dark);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-gold {
+            background: var(--gradient-gold);
+            color: white;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border-top: 3px solid var(--gold-accent);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-gold);
+            border-top: 3px solid var(--gold-dark);
+        }
+        
+        .feature i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        /* Enhanced Rewards Section */
+        .rewards-hero {
+            background: var(--gradient-primary);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .rewards-hero h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .rewards-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.95;
+        }
+
+        .coming-soon {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px 40px;
+            border-radius: 50px;
+            border: 2px solid var(--gold-light);
+            display: inline-block;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Top 3 Rewards */
+        .top-rewards {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .rewards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .reward-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .reward-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .reward-card.popular::before {
+            content: "MOST POPULAR";
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            transform: rotate(45deg);
+            z-index: 2;
+        }
+
+        .reward-image {
+            height: 200px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .reward-image i {
+            font-size: 4rem;
+            color: white;
+        }
+
+        .reward-content {
+            padding: 30px;
+        }
+
+        .reward-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .reward-benefits {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .reward-benefits li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+
+        .reward-benefits i {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .reward-points {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .points-cost {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .points-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Claim Flow */
+        .claim-flow {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .flow-step {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--light-bg);
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .step-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        /* Redemption History */
+        .redemption-history {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .history-preview {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .history-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Proof System */
+        .proof-system {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .proof-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .proof-method {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .proof-method:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .proof-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .proof-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        /* Gold Standard Section */
+        .gold-standard {
+            padding: 80px 0;
+            background: var(--gradient-gold);
+            color: white;
+            text-align: center;
+        }
+
+        .gold-standard h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .gold-perks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .gold-perk {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .gold-perk i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .gold-perk h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .elite-threshold {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px 40px;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+        
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            border-top: 3px solid var(--gold-accent);
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--gold-light) 50%, transparent 100%);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .rewards-hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .rewards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .flow-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .history-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .proof-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .gold-perks {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">Lyfe Shift</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#challenge">Challenge</a></li>
+                <li><a href="#rewards">Rewards</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Welcome to Lyfe Shift</h1>
+            <p>Join our community-driven fitness challenge and compete for amazing rewards! Connect with thousands of motivated members who are pushing their limits together.</p>
+            <a href="signup.html" class="btn btn-primary">
+                <i class="fas fa-user-plus"></i> Create Account
+            </a>
+            <a href="login.html" class="btn">
+                <i class="fas fa-sign-in-alt"></i> Member Login
+            </a>
+            <button onclick="showJoinChallenge()" class="btn btn-gold">
+                <i class="fas fa-rocket"></i> Join Challenge
+            </button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="challenge" class="section">
+        <div class="container">
+            <h2>🏆 Why Choose Lyfe Shift?</h2>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-users"></i>
+                    <h3>Never Train Alone</h3>
+                    <p>Connect with thousands of motivated members who celebrate your wins, support your struggles, and push you to achieve more than you thought possible.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Compete for Amazing Prizes</h3>
+                    <p>Push yourself to the limit and compete for incredible rewards! Top performers will win premium fitness gear and exclusive Lyfe Shift merchandise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How The Competition Works Section -->
+    <section id="competition" class="section" style="background: var(--light-bg);">
+        <div class="container">
+            <h2>🏆 How The Competition Works</h2>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-download"></i>
+                    <h3>1. Download & Join</h3>
+                    <p>Get the Challenges app and join with invite code "vh3g" to enter the competition and start your fitness journey.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-dumbbell"></i>
+                    <h3>2. Complete Daily Challenges</h3>
+                    <p>Participate in daily workout challenges, track your progress, and earn points based on consistency and performance.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-trophy"></i>
+                    <h3>3. Top 3 Win Rewards</h3>
+                    <p>Only the top 3 highest-performing competitors will win exclusive rewards! Stay consistent to claim your spot on the leaderboard.</p>
+                </div>
+            </div>
+            
+            <!-- Competition Details -->
+            <div style="background: white; border-radius: 15px; padding: 40px; margin-top: 40px; box-shadow: var(--shadow); border-top: 3px solid var(--gold-accent);">
+                <h3 style="text-align: center; margin-bottom: 30px; color: var(--text-dark); font-family: var(--font-heading);">
+                    <i class="fas fa-info-circle"></i> Competition Details
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                    <div style="text-align: center;">
+                        <i class="fas fa-calendar-alt" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                        <h4 style="margin-bottom: 10px; color: var(--text-dark);">Competition Period</h4>
+                        <p style="color: var(--text-light);">Ongoing competition with flexible timeline and continuous leaderboard tracking</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                        <h4 style="margin-bottom: 10px; color: var(--text-dark);">Scoring System</h4>
+                        <p style="color: var(--text-light);">Points awarded for workout completion, consistency streaks, and community engagement</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <i class="fas fa-medal" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                        <h4 style="margin-bottom: 10px; color: var(--text-dark);">Winners Selection</h4>
+                        <p style="color: var(--text-light);">Top 3 participants with highest total scores win exclusive fitness rewards</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Rewards Section -->
+    <section id="rewards" class="rewards-hero">
+        <div class="container">
+            <h2>🎉 Winners Announced Soon</h2>
+        </div>
+    </section>
+
+    <!-- Competition Prizes Section -->
+    <section class="top-rewards">
+        <div class="container">
+            <h2>🎁 Competition Prizes</h2>
+            <div class="rewards-grid">
+                <div class="reward-card">
+                    <div class="reward-image" style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);">
+                        <i class="fas fa-duffel-bag"></i>
+                    </div>
+                    <div class="reward-content">
+                        <div class="reward-title">🥇 1st Place - Premium Gym Bag</div>
+                        <ul class="reward-benefits">
+                            <li><i class="fas fa-check"></i> High-quality fitness bag</li>
+                            <li><i class="fas fa-check"></i> Multiple compartments</li>
+                            <li><i class="fas fa-check"></i> Shoe compartment included</li>
+                            <li><i class="fas fa-check"></i> Water bottle holder</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="reward-card">
+                    <div class="reward-image" style="background: linear-gradient(135deg, #C0C0C0 0%, #A8A8A8 100%);">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="reward-content">
+                        <div class="reward-title">🥈 2nd Place - Massage Gun</div>
+                        <ul class="reward-benefits">
+                            <li><i class="fas fa-check"></i> Professional percussion therapy</li>
+                            <li><i class="fas fa-check"></i> Multiple speed settings</li>
+                            <li><i class="fas fa-check"></i> Various massage heads</li>
+                            <li><i class="fas fa-check"></i> Portable and rechargeable</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="reward-card">
+                    <div class="reward-image" style="background: linear-gradient(135deg, #CD7F32 0%, #B8860B 100%);">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                    <div class="reward-content">
+                        <div class="reward-title">🥉 3rd Place - Recovery Set</div>
+                        <ul class="reward-benefits">
+                            <li><i class="fas fa-check"></i> Foam roller for muscle relief</li>
+                            <li><i class="fas fa-check"></i> Recovery ball included</li>
+                            <li><i class="fas fa-check"></i> Perfect for post-workout</li>
+                            <li><i class="fas fa-check"></i> Improves flexibility</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="reward-card">
+                    <div class="reward-image" style="background: linear-gradient(135deg, #9B7EDE 0%, #B8A9D9 100%);">
+                        <i class="fas fa-grip-lines"></i>
+                    </div>
+                    <div class="reward-content">
+                        <div class="reward-title">🏅 4th Place - Stretch Bands</div>
+                        <ul class="reward-benefits">
+                            <li><i class="fas fa-check"></i> Resistance bands set</li>
+                            <li><i class="fas fa-check"></i> Multiple resistance levels</li>
+                            <li><i class="fas fa-check"></i> Perfect for strength training</li>
+                            <li><i class="fas fa-check"></i> Improves flexibility</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="reward-card">
+                    <div class="reward-image" style="background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="reward-content">
+                        <div class="reward-title">🏅 5th Place - Premium Water Bottle</div>
+                        <ul class="reward-benefits">
+                            <li><i class="fas fa-check"></i> Insulated sports bottle</li>
+                            <li><i class="fas fa-check"></i> Keeps drinks cold/hot</li>
+                            <li><i class="fas fa-check"></i> Leak-proof design</li>
+                            <li><i class="fas fa-check"></i> Perfect for workouts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competition Info Section -->
+    <section class="section" style="background: var(--light-bg);">
+        <div class="container">
+            <h2>🎯 How to Win</h2>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-fire"></i>
+                    <h3>Stay Consistent</h3>
+                    <p>Complete your daily workouts and maintain your streak. Consistency is key to reaching the top 5!</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Track Progress</h3>
+                    <p>Monitor your performance and push yourself to improve. The leaderboard shows who's leading!</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-users"></i>
+                    <h3>Engage Community</h3>
+                    <p>Support others and stay motivated together. The most active participants often win!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Winner Proof Submission Section -->
+    <section class="section">
+        <div class="container">
+            <h2>📸 Winner Proof Submission</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px; color: var(--text-light);">Top 5 winners must submit proof to claim their rewards</p>
+            
+            <div class="proof-methods">
+                <div class="proof-method">
+                    <div class="proof-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Workout Screenshots</h3>
+                    <p>Submit clear screenshots from the Challenges app showing your workout completion and final ranking position.</p>
+                </div>
+                
+                <div class="proof-method">
+                    <div class="proof-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Leaderboard Position</h3>
+                    <p>Provide screenshot evidence of your final leaderboard position showing you finished in the top 5.</p>
+                </div>
+                
+                <div class="proof-method">
+                    <div class="proof-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Profile Verification</h3>
+                    <p>Submit your app profile information to verify your identity and confirm your participation in the competition.</p>
+                </div>
+            </div>
+            
+            <div style="background: white; border-radius: 15px; padding: 40px; margin-top: 40px; box-shadow: var(--shadow); border-top: 3px solid var(--gold-accent); text-align: center;">
+                <h3 style="margin-bottom: 20px; color: var(--text-dark); font-family: var(--font-heading);">
+                    <i class="fas fa-exclamation-triangle"></i> Important Notice
+                </h3>
+                <p style="color: var(--text-light); font-size: 1.1rem;">Winners have 7 days from announcement to submit proof and shipping information. Failure to respond within this timeframe will result in forfeiture of rewards.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shipping Information Section -->
+    <section class="section" style="background: var(--light-bg);">
+        <div class="container">
+            <h2>📦 Shipping & Delivery</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px; color: var(--text-light);">Winners will need to provide complete shipping information to receive their rewards</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-address-card"></i>
+                    <h3>Contact Information</h3>
+                    <p>Full name, complete mailing address, phone number, and email confirmation for delivery coordination.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Size Preferences</h3>
+                    <p>Clothing and gear size preferences to ensure your rewards fit perfectly and meet your needs.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-truck"></i>
+                    <h3>Delivery Instructions</h3>
+                    <p>Special delivery instructions, preferred delivery times, and any access requirements for your location.</p>
+                </div>
+            </div>
+            
+            <div style="background: white; border-radius: 15px; padding: 40px; margin-top: 40px; box-shadow: var(--shadow); border-top: 3px solid var(--gold-accent);">
+                <h3 style="text-align: center; margin-bottom: 30px; color: var(--text-dark); font-family: var(--font-heading);">
+                    <i class="fas fa-shipping-fast"></i> Shipping Details
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                    <div style="text-align: center;">
+                        <i class="fas fa-globe" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                        <h4 style="margin-bottom: 10px; color: var(--text-dark);">Shipping Coverage</h4>
+                        <p style="color: var(--text-light);">Free shipping worldwide for all top 5 winners</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <i class="fas fa-clock" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                        <h4 style="margin-bottom: 10px; color: var(--text-dark);">Delivery Time</h4>
+                        <p style="color: var(--text-light);">5-10 business days for domestic, 10-21 days international</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <i class="fas fa-shield-alt" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                        <h4 style="margin-bottom: 10px; color: var(--text-dark);">Tracking & Insurance</h4>
+                        <p style="color: var(--text-light);">Full tracking provided with insurance coverage for all shipments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section">
+        <div class="container" style="text-align: center;">
+            <h2>🚀 Ready to Compete?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; color: var(--text-light);">Join thousands who are already competing for amazing rewards!</p>
+            <button onclick="showJoinChallenge()" class="btn" style="font-size: 1.2rem; padding: 20px 40px;">
+                <i class="fas fa-rocket"></i> Start My Journey Now
+            </button>
+            <p style="margin-top: 20px; color: var(--text-light); font-style: italic;">100% Free • New challenges weekly • Join anytime</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Lyfe Shift Community. Transform together, succeed together.</p>
+            <a href="admin/" style="position: absolute; bottom: 5px; right: 10px; color: rgba(255,255,255,0.3); text-decoration: none; font-size: 0.7rem;">•</a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const target = parseInt(stat.textContent);
+                        animateCounter(stat, target);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.history-stats');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current).toLocaleString();
+            }, 30);
+        }
+
+        // Join Challenge Modal
+        function showJoinChallenge() {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                backdrop-filter: blur(5px);
+            `;
+            
+            modal.innerHTML = `
+                <div style="
+                    background: white;
+                    border-radius: 20px;
+                    padding: 40px;
+                    max-width: 500px;
+                    width: 90%;
+                    text-align: center;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                    position: relative;
+                ">
+                    <button onclick="this.closest('.modal').remove()" style="
+                        position: absolute;
+                        top: 15px;
+                        right: 20px;
+                        background: none;
+                        border: none;
+                        font-size: 1.5rem;
+                        color: #999;
+                        cursor: pointer;
+                    ">×</button>
+                    
+                    <div style="
+                        background: var(--gradient-primary);
+                        color: white;
+                        padding: 20px;
+                        border-radius: 15px;
+                        margin-bottom: 30px;
+                    ">
+                        <h2 style="margin: 0 0 10px 0; font-family: var(--font-heading);">
+                            🏆 Join the Lyfe Shift Challenge
+                        </h2>
+                        <p style="margin: 0; opacity: 0.9;">Follow these steps to compete for amazing rewards!</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <div style="
+                            background: var(--gradient-gold);
+                            color: white;
+                            padding: 20px;
+                            border-radius: 15px;
+                            margin-bottom: 20px;
+                        ">
+                            <h3 style="margin: 0 0 10px 0; font-family: var(--font-heading);">
+                                Challenge Code
+                            </h3>
+                            <div style="
+                                background: rgba(255, 255, 255, 0.2);
+                                padding: 15px;
+                                border-radius: 10px;
+                                font-size: 2rem;
+                                font-weight: 700;
+                                letter-spacing: 3px;
+                                margin-bottom: 15px;
+                            ">vh3g</div>
+                            <button onclick="copyCode()" style="
+                                background: rgba(255, 255, 255, 0.2);
+                                color: white;
+                                border: 2px solid rgba(255, 255, 255, 0.3);
+                                padding: 10px 20px;
+                                border-radius: 25px;
+                                cursor: pointer;
+                                font-weight: 600;
+                                transition: all 0.3s ease;
+                            " onmouseover="this.style.background='rgba(255,255,255,0.3)'" 
+                               onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+                                <i class="fas fa-copy"></i> Copy Code
+                            </button>
+                        </div>
+                        
+                        <div style="text-align: left; margin-bottom: 20px;">
+                            <h4 style="color: var(--text-dark); margin-bottom: 15px; font-family: var(--font-heading);">
+                                📱 How to Join:
+                            </h4>
+                            <ol style="color: var(--text-light); line-height: 1.8; padding-left: 20px;">
+                                <li><strong>Download</strong> the Challenges app from the App Store</li>
+                                <li><strong>Create</strong> your account or sign in</li>
+                                <li><strong>Enter code "vh3g"</strong> to join the Lyfe Shift competition</li>
+                                <li><strong>Start competing</strong> and track your progress!</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <a href="https://apps.apple.com/us/app/challenges-compete-get-fit/id1051342211" 
+                           target="_blank" 
+                           style="
+                               background: var(--gradient-primary);
+                               color: white;
+                               padding: 15px 25px;
+                               border-radius: 10px;
+                               text-decoration: none;
+                               font-weight: 600;
+                               transition: all 0.3s ease;
+                               display: inline-flex;
+                               align-items: center;
+                               gap: 8px;
+                           "
+                           onmouseover="this.style.transform='translateY(-2px)'"
+                           onmouseout="this.style.transform='translateY(0)'">
+                            <i class="fas fa-download"></i> Download App
+                        </a>
+                        
+                        <button onclick="this.closest('.modal').remove()" style="
+                            background: #f8f9fa;
+                            color: var(--text-dark);
+                            border: 2px solid #e9ecef;
+                            padding: 15px 25px;
+                            border-radius: 10px;
+                            cursor: pointer;
+                            font-weight: 600;
+                            transition: all 0.3s ease;
+                        " onmouseover="this.style.background='#e9ecef'" 
+                           onmouseout="this.style.background='#f8f9fa'">
+                            Got It!
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            modal.className = 'modal';
+            document.body.appendChild(modal);
+            
+            // Close on background click
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+
+        function copyCode() {
+            navigator.clipboard.writeText('vh3g').then(function() {
+                // Show success feedback
+                const button = event.target.closest('button');
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                button.style.background = 'rgba(39, 174, 96, 0.3)';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.background = 'rgba(255, 255, 255, 0.2)';
+                }, 2000);
+            }).catch(function() {
+                // Fallback for older browsers
+                alert('Challenge code: vh3g\n\nPlease copy this code manually.');
+            });
+        }
+    </script>
+</body>
+</html>
