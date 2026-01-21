@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Lyfe Shift Community</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #9B7EDE;
+            --secondary-color: #C8B5E8;
+            --accent-color: #E6D9F7;
+            --text-dark: #4A4458;
+            --text-light: #8B7FA3;
+            --white: #FFFFFF;
+            --light-bg: #FDFCFF;
+            --gradient-primary: linear-gradient(135deg, #9B7EDE 0%, #B8A9D9 100%);
+            --gradient-gold: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            --gold-accent: #D4AF37;
+            --gold-light: #F7E98E;
+            --gold-dark: #B8860B;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --shadow-gold: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+        
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--gradient-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .signup-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow-hover);
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .signup-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-gold);
+        }
+        
+        .logo-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .welcome-text {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        .form-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(155, 126, 222, 0.1);
+        }
+        
+        .form-input.error {
+            border-color: #e74c3c;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .password-strength {
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .strength-bar {
+            height: 4px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            margin: 5px 0;
+            overflow: hidden;
+        }
+        
+        .strength-fill {
+            height: 100%;
+            width: 0%;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .strength-weak { background: #e74c3c; }
+        .strength-medium { background: #f39c12; }
+        .strength-strong { background: #27ae60; }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .checkbox-input {
+            margin-top: 3px;
+        }
+        
+        .checkbox-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+        
+        .checkbox-label a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .checkbox-label a:hover {
+            text-decoration: underline;
+        }
+        
+        .btn {
+            width: 100%;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+            color: var(--text-light);
+        }
+        
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e0e0e0;
+        }
+        
+        .divider span {
+            background: white;
+            padding: 0 15px;
+        }
+        
+        .login-link {
+            text-align: center;
+            color: var(--text-light);
+        }
+        
+        .login-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            padding: 10px 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .back-home:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .signup-container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .back-home {
+                position: static;
+                display: inline-block;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+    
+    <div class="signup-container">
+        <div class="logo-section">
+            <div class="logo">🏋️‍♂️ Lyfe Shift</div>
+            <p class="welcome-text">Join the fitness revolution</p>
+        </div>
+        
+        <h2 class="form-title">Create Your Account</h2>
+        
+        <div class="success-message" id="successMessage">
+            Account created successfully! You can now log in to participate in competitions.
+        </div>
+        
+        <form id="signupForm">
+            <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-input" id="fullName" placeholder="Enter your full name" required>
+                <div class="error-message" id="fullNameError">Please enter your full name</div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-input" id="email" placeholder="Enter your email" required>
+                <div class="error-message" id="emailError">Please enter a valid email address</div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">App Username</label>
+                <input type="text" class="form-input" id="username" placeholder="Your Challenges app username" required>
+                <div class="error-message" id="usernameError">Please enter your app username</div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-input" id="password" placeholder="Create a strong password" required>
+                <div class="password-strength" id="passwordStrength">
+                    <div class="strength-bar">
+                        <div class="strength-fill" id="strengthFill"></div>
+                    </div>
+                    <span id="strengthText">Password strength</span>
+                </div>
+                <div class="error-message" id="passwordError">Password must be at least 8 characters</div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Confirm Password</label>
+                <input type="password" class="form-input" id="confirmPassword" placeholder="Confirm your password" required>
+                <div class="error-message" id="confirmPasswordError">Passwords do not match</div>
+            </div>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" class="checkbox-input" id="agreeTerms" required>
+                <label class="checkbox-label" for="agreeTerms">
+                    I agree to the <a href="#" onclick="showTerms()">Terms of Service</a> and <a href="#" onclick="showPrivacy()">Privacy Policy</a>
+                </label>
+            </div>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" class="checkbox-input" id="emailUpdates">
+                <label class="checkbox-label" for="emailUpdates">
+                    I want to receive email updates about competitions and rewards
+                </label>
+            </div>
+            
+            <button type="submit" class="btn" id="signupBtn">
+                <i class="fas fa-user-plus"></i> Create Account
+            </button>
+        </form>
+        
+        <div class="divider">
+            <span>Already have an account?</span>
+        </div>
+        
+        <div class="login-link">
+            <a href="login.html">Sign in to your account</a>
+        </div>
+    </div>
+    
+    <script>
+        // Form validation and submission
+        const form = document.getElementById('signupForm');
+        const inputs = form.querySelectorAll('.form-input');
+        
+        // Real-time validation
+        inputs.forEach(input => {
+            input.addEventListener('blur', validateField);
+            input.addEventListener('input', clearError);
+        });
+        
+        // Password strength checker
+        document.getElementById('password').addEventListener('input', checkPasswordStrength);
+        
+        // Confirm password validation
+        document.getElementById('confirmPassword').addEventListener('input', validatePasswordMatch);
+        
+        function validateField(e) {
+            const field = e.target;
+            const fieldId = field.id;
+            const value = field.value.trim();
+            
+            clearError(e);
+            
+            switch(fieldId) {
+                case 'fullName':
+                    if (value.length < 2) {
+                        showError(field, 'Please enter your full name');
+                        return false;
+                    }
+                    break;
+                    
+                case 'email':
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(value)) {
+                        showError(field, 'Please enter a valid email address');
+                        return false;
+                    }
+                    // Check if email already exists
+                    if (emailExists(value)) {
+                        showError(field, 'This email is already registered');
+                        return false;
+                    }
+                    break;
+                    
+                case 'username':
+                    if (value.length < 3) {
+                        showError(field, 'Username must be at least 3 characters');
+                        return false;
+                    }
+                    // Check if username already exists
+                    if (usernameExists(value)) {
+                        showError(field, 'This username is already taken');
+                        return false;
+                    }
+                    break;
+                    
+                case 'password':
+                    if (value.length < 8) {
+                        showError(field, 'Password must be at least 8 characters');
+                        return false;
+                    }
+                    break;
+                    
+                case 'confirmPassword':
+                    if (value !== document.getElementById('password').value) {
+                        showError(field, 'Passwords do not match');
+                        return false;
+                    }
+                    break;
+            }
+            
+            return true;
+        }
+        
+        function clearError(e) {
+            const field = e.target;
+            field.classList.remove('error');
+            const errorElement = document.getElementById(field.id + 'Error');
+            if (errorElement) {
+                errorElement.style.display = 'none';
+            }
+        }
+        
+        function showError(field, message) {
+            field.classList.add('error');
+            const errorElement = document.getElementById(field.id + 'Error');
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+        }
+        
+        function checkPasswordStrength() {
+            const password = document.getElementById('password').value;
+            const strengthFill = document.getElementById('strengthFill');
+            const strengthText = document.getElementById('strengthText');
+            
+            let strength = 0;
+            let feedback = [];
+            
+            // Length check
+            if (password.length >= 8) strength += 25;
+            else feedback.push('at least 8 characters');
+            
+            // Uppercase check
+            if (/[A-Z]/.test(password)) strength += 25;
+            else feedback.push('uppercase letter');
+            
+            // Lowercase check
+            if (/[a-z]/.test(password)) strength += 25;
+            else feedback.push('lowercase letter');
+            
+            // Number or special character check
+            if (/[\d\W]/.test(password)) strength += 25;
+            else feedback.push('number or special character');
+            
+            // Update visual feedback
+            strengthFill.style.width = strength + '%';
+            
+            if (strength < 50) {
+                strengthFill.className = 'strength-fill strength-weak';
+                strengthText.textContent = 'Weak - Add: ' + feedback.join(', ');
+            } else if (strength < 100) {
+                strengthFill.className = 'strength-fill strength-medium';
+                strengthText.textContent = 'Medium - Add: ' + feedback.join(', ');
+            } else {
+                strengthFill.className = 'strength-fill strength-strong';
+                strengthText.textContent = 'Strong password!';
+            }
+        }
+        
+        function validatePasswordMatch() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (confirmPassword && password !== confirmPassword) {
+                showError(document.getElementById('confirmPassword'), 'Passwords do not match');
+            }
+        }
+        
+        function emailExists(email) {
+            const users = JSON.parse(localStorage.getItem('lyfeshift_users') || '[]');
+            return users.some(user => user.email.toLowerCase() === email.toLowerCase());
+        }
+        
+        function usernameExists(username) {
+            const users = JSON.parse(localStorage.getItem('lyfeshift_users') || '[]');
+            return users.some(user => user.username.toLowerCase() === username.toLowerCase());
+        }
+        
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate all fields
+            let isValid = true;
+            inputs.forEach(input => {
+                if (!validateField({ target: input })) {
+                    isValid = false;
+                }
+            });
+            
+            // Check terms agreement
+            if (!document.getElementById('agreeTerms').checked) {
+                alert('Please agree to the Terms of Service and Privacy Policy');
+                isValid = false;
+            }
+            
+            if (!isValid) return;
+            
+            // Create user account
+            const userData = {
+                id: Date.now().toString(),
+                fullName: document.getElementById('fullName').value.trim(),
+                email: document.getElementById('email').value.trim().toLowerCase(),
+                username: document.getElementById('username').value.trim(),
+                password: document.getElementById('password').value, // In production, this should be hashed
+                emailUpdates: document.getElementById('emailUpdates').checked,
+                createdAt: new Date().toISOString(),
+                isWinner: false,
+                hasSubmittedProof: false,
+                hasSubmittedShipping: false
+            };
+            
+            // Save to localStorage
+            const users = JSON.parse(localStorage.getItem('lyfeshift_users') || '[]');
+            users.push(userData);
+            localStorage.setItem('lyfeshift_users', JSON.stringify(users));
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            form.style.display = 'none';
+            
+            // Redirect to login after 3 seconds
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 3000);
+        });
+        
+        function showTerms() {
+            alert('Terms of Service:\n\n1. You must be 18+ to participate\n2. Only one account per person\n3. Provide accurate information\n4. Follow competition rules\n5. Winners must submit proof within 7 days');
+        }
+        
+        function showPrivacy() {
+            alert('Privacy Policy:\n\n1. We collect only necessary information\n2. Your data is stored securely\n3. We do not share personal information\n4. You can request data deletion\n5. Cookies are used for functionality');
+        }
+    </script>
+</body>
+</html>
