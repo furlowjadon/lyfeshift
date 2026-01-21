@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Food Affects Your Body - Lyfe Shift Community</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #800080;
+            --primary-light: #9B7EDE;
+            --secondary-color: #C8B5E8;
+            --accent-color: #E6D9F7;
+            --text-dark: #4A4458;
+            --text-light: #8B7FA3;
+            --white: #FFFFFF;
+            --light-bg: #FDFCFF;
+            --gradient-primary: linear-gradient(135deg, #800080 0%, #9B7EDE 100%);
+            --gradient-secondary: linear-gradient(135deg, #9B7EDE 0%, #C8B5E8 100%);
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --energy-color: #f39c12;
+            --muscle-color: #e74c3c;
+            --fat-color: #27ae60;
+            --hormone-color: #9b59b6;
+            --inflammation-color: #e67e22;
+            --recovery-color: #3498db;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-bg);
+        }
+        
+        .header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav-link.back-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .page-header {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .page-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .page-title {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .page-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+        
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .intro-section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .intro-text {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .body-system {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .body-system::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--system-color, var(--primary-color));
+        }
+        
+        .body-system.energy::before { background: var(--energy-color); }
+        .body-system.muscle::before { background: var(--muscle-color); }
+        .body-system.fat::before { background: var(--fat-color); }
+        .body-system.hormone::before { background: var(--hormone-color); }
+        .body-system.inflammation::before { background: var(--inflammation-color); }
+        .body-system.recovery::before { background: var(--recovery-color); }
+        
+        .system-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .system-icon {
+            font-size: 3.5rem;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .system-icon.energy { background: var(--energy-color); }
+        .system-icon.muscle { background: var(--muscle-color); }
+        .system-icon.fat { background: var(--fat-color); }
+        .system-icon.hormone { background: var(--hormone-color); }
+        .system-icon.inflammation { background: var(--inflammation-color); }
+        .system-icon.recovery { background: var(--recovery-color); }
+        
+        .system-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        
+        .system-subtitle {
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+        
+        .system-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .system-info h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        
+        .system-info p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .food-impact {
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 30px;
+        }
+        
+        .impact-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .impact-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .impact-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .impact-icon {
+            font-size: 1.2rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        
+        .impact-text {
+            flex: 1;
+        }
+        
+        .impact-text strong {
+            color: var(--text-dark);
+        }
+        
+        .good-foods, .avoid-foods {
+            margin-top: 30px;
+        }
+        
+        .food-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .food-tag {
+            background: var(--system-color, var(--primary-color));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .food-tag.good { background: var(--fat-color); }
+        .food-tag.avoid { background: var(--muscle-color); }
+        
+        .energy .food-tag.good { background: var(--energy-color); }
+        .muscle .food-tag.good { background: var(--muscle-color); }
+        .fat .food-tag.good { background: var(--fat-color); }
+        .hormone .food-tag.good { background: var(--hormone-color); }
+        .inflammation .food-tag.good { background: var(--inflammation-color); }
+        .recovery .food-tag.good { background: var(--recovery-color); }
+        
+        .key-takeaways {
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .key-takeaways h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .takeaways-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .takeaway-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .takeaway-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .takeaway-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .takeaway-text {
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            gap: 20px;
+        }
+        
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button.prev {
+            background: var(--light-bg);
+            color: var(--text-dark);
+            border: 2px solid var(--secondary-color);
+        }
+        
+        .nav-button.next {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .main-container {
+                padding: 40px 15px;
+            }
+            
+            .body-system {
+                padding: 30px 20px;
+            }
+            
+            .system-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .system-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .navigation-buttons {
+                flex-direction: column;
+            }
+            
+            .takeaways-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                🏋️‍♂️ Lyfe Shift
+            </div>
+            <nav class="nav-links">
+                <a href="nutrition-home.html" class="nav-link back-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Nutrition
+                </a>
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="user-dashboard.html" class="nav-link">Dashboard</a>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1 class="page-title">🔬 How Food Affects Your Body</h1>
+            <p class="page-subtitle">Understand the science behind nutrition and how different foods impact your performance and health</p>
+        </div>
+    </section>
+    
+    <div class="main-container">
+        <section class="intro-section">
+            <p class="intro-text">
+                Every bite you take sends signals throughout your body, influencing everything from your energy levels to your mood. 
+                Understanding how food affects your body's systems empowers you to make informed choices that support your fitness goals 
+                and overall well-being. Let's explore the fascinating science behind nutrition.
+            </p>
+        </section>
+        
+        <!-- Energy Levels -->
+        <section class="body-system energy">
+            <div class="system-header">
+                <div class="system-icon energy">⚡</div>
+                <div>
+                    <h2 class="system-title">Energy Levels</h2>
+                    <p class="system-subtitle">How food fuels your daily activities and workouts</p>
+                </div>
+            </div>
+            
+            <div class="system-content">
+                <div class="system-info">
+                    <h3>The Energy Connection</h3>
+                    <p>Your body converts food into glucose, which serves as the primary fuel for your cells. The type and timing of foods you eat directly impact your energy stability throughout the day.</p>
+                    
+                    <div class="food-impact">
+                        <h3>How Different Foods Affect Energy</h3>
+                        <ul class="impact-list">
+                            <li>
+                                <span class="impact-icon">🍬</span>
+                                <div class="impact-text">
+                                    <strong>Simple sugars:</strong> Provide quick energy but cause crashes within 1-2 hours
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">🍠</span>
+                                <div class="impact-text">
+                                    <strong>Complex carbs:</strong> Release energy slowly for 3-4 hours of sustained fuel
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">🥩</span>
+                                <div class="impact-text">
+                                    <strong>Protein:</strong> Provides steady energy and prevents blood sugar spikes
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">🥑</span>
+                                <div class="impact-text">
+                                    <strong>Healthy fats:</strong> Offer long-lasting energy and improve nutrient absorption
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="good-foods">
+                        <h3>🟢 Foods for Sustained Energy</h3>
+                        <div class="food-tags">
+                            <span class="food-tag good">Oatmeal</span>
+                            <span class="food-tag good">Sweet Potatoes</span>
+                            <span class="food-tag good">Quinoa</span>
+                            <span class="food-tag good">Bananas</span>
+                            <span class="food-tag good">Greek Yogurt</span>
+                            <span class="food-tag good">Nuts & Seeds</span>
+                        </div>
+                    </div>
+                    
+                    <div class="avoid-foods">
+                        <h3>🔴 Foods That Cause Energy Crashes</h3>
+                        <div class="food-tags">
+                            <span class="food-tag avoid">Candy</span>
+                            <span class="food-tag avoid">Soda</span>
+                            <span class="food-tag avoid">White Bread</span>
+                            <span class="food-tag avoid">Pastries</span>
+                            <span class="food-tag avoid">Energy Drinks</span>
+                            <span class="food-tag avoid">Processed Snacks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Muscle Growth -->
+        <section class="body-system muscle">
+            <div class="system-header">
+                <div class="system-icon muscle">💪</div>
+                <div>
+                    <h2 class="system-title">Muscle Growth</h2>
+                    <p class="system-subtitle">How nutrition supports muscle protein synthesis and recovery</p>
+                </div>
+            </div>
+            
+            <div class="system-content">
+                <div class="system-info">
+                    <h3>The Muscle Building Process</h3>
+                    <p>Muscle growth occurs through muscle protein synthesis (MPS), where your body repairs and builds new muscle tissue. This process requires adequate protein, energy, and specific nutrients to function optimally.</p>
+                    
+                    <div class="food-impact">
+                        <h3>Nutritional Factors for Muscle Growth</h3>
+                        <ul class="impact-list">
+                            <li>
+                                <span class="impact-icon">🥩</span>
+                                <div class="impact-text">
+                                    <strong>Protein timing:</strong> 20-30g within 2 hours post-workout maximizes MPS
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">🍌</span>
+                                <div class="impact-text">
+                                    <strong>Carbohydrates:</strong> Replenish glycogen stores and support protein synthesis
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">💧</span>
+                                <div class="impact-text">
+                                    <strong>Hydration:</strong> Essential for nutrient transport and muscle function
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">😴</span>
+                                <div class="impact-text">
+                                    <strong>Sleep nutrition:</strong> Casein protein before bed supports overnight recovery
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="good-foods">
+                        <h3>🟢 Muscle-Building Foods</h3>
+                        <div class="food-tags">
+                            <span class="food-tag good">Chicken Breast</span>
+                            <span class="food-tag good">Salmon</span>
+                            <span class="food-tag good">Eggs</span>
+                            <span class="food-tag good">Greek Yogurt</span>
+                            <span class="food-tag good">Cottage Cheese</span>
+                            <span class="food-tag good">Lean Beef</span>
+                        </div>
+                    </div>
+                    
+                    <div class="avoid-foods">
+                        <h3>🔴 Foods That Hinder Muscle Growth</h3>
+                        <div class="food-tags">
+                            <span class="food-tag avoid">Excessive Alcohol</span>
+                            <span class="food-tag avoid">High Sugar Foods</span>
+                            <span class="food-tag avoid">Trans Fats</span>
+                            <span class="food-tag avoid">Processed Meats</span>
+                            <span class="food-tag avoid">Low Protein Diets</span>
+                            <span class="food-tag avoid">Chronic Undereating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Fat Loss -->
+        <section class="body-system fat">
+            <div class="system-header">
+                <div class="system-icon fat">🔥</div>
+                <div>
+                    <h2 class="system-title">Fat Loss</h2>
+                    <p class="system-subtitle">How your body burns fat and the role of nutrition in weight management</p>
+                </div>
+            </div>
+            
+            <div class="system-content">
+                <div class="system-info">
+                    <h3>The Fat Burning Process</h3>
+                    <p>Fat loss occurs when your body is in a caloric deficit, using stored fat for energy. However, the quality of your food choices significantly impacts how efficiently your body burns fat and preserves muscle mass.</p>
+                    
+                    <div class="food-impact">
+                        <h3>How Foods Affect Fat Loss</h3>
+                        <ul class="impact-list">
+                            <li>
+                                <span class="impact-icon">🌶️</span>
+                                <div class="impact-text">
+                                    <strong>Thermogenic foods:</strong> Increase metabolic rate and calorie burning
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">🥬</span>
+                                <div class="impact-text">
+                                    <strong>High-fiber foods:</strong> Increase satiety and reduce overall calorie intake
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">🥩</span>
+                                <div class="impact-text">
+                                    <strong>Protein:</strong> Has highest thermic effect, burning 20-30% of calories during digestion
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">💧</span>
+                                <div class="impact-text">
+                                    <strong>Water:</strong> Boosts metabolism and helps mobilize stored fat
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="good-foods">
+                        <h3>🟢 Fat-Burning Foods</h3>
+                        <div class="food-tags">
+                            <span class="food-tag good">Green Tea</span>
+                            <span class="food-tag good">Chili Peppers</span>
+                            <span class="food-tag good">Lean Protein</span>
+                            <span class="food-tag good">Leafy Greens</span>
+                            <span class="food-tag good">Berries</span>
+                            <span class="food-tag good">Coconut Oil</span>
+                        </div>
+                    </div>
+                    
+                    <div class="avoid-foods">
+                        <h3>🔴 Foods That Promote Fat Storage</h3>
+                        <div class="food-tags">
+                            <span class="food-tag avoid">Refined Sugar</span>
+                            <span class="food-tag avoid">Trans Fats</span>
+                            <span class="food-tag avoid">High-Fructose Corn Syrup</span>
+                            <span class="food-tag avoid">Processed Foods</span>
+                            <span class="food-tag avoid">Excessive Refined Carbs</span>
+                            <span class="food-tag avoid">Late-Night Eating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Hormone Balance -->
+        <section class="body-system hormone">
+            <div class="system-header">
+                <div class="system-icon hormone">⚖️</div>
+                <div>
+                    <h2 class="system-title">Hormone Balance</h2>
+                    <p class="system-subtitle">How nutrition influences your body's hormonal systems</p>
+                </div>
+            </div>
+            
+            <div class="system-content">
+                <div class="system-info">
+                    <h3>The Hormone-Nutrition Connection</h3>
+                    <p>Your hormones regulate everything from metabolism to mood to muscle growth. The foods you eat directly influence hormone production and sensitivity, affecting your body's ability to build muscle, burn fat, and recover.</p>
+                    
+                    <div class="food-impact">
+                        <h3>Key Hormonal Impacts</h3>
+                        <ul class="impact-list">
+                            <li>
+                                <span class="impact-icon">🍯</span>
+                                <div class="impact-text">
+                                    <strong>Insulin:</strong> Controlled by carb quality and meal timing
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">💪</span>
+                                <div class="impact-text">
+                                    <strong>Testosterone:</strong> Supported by healthy fats and adequate calories
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">😴</span>
+                                <div class="impact-text">
+                                    <strong>Growth hormone:</strong> Enhanced by protein and intermittent fasting
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">🧘</span>
+                                <div class="impact-text">
+                                    <strong>Cortisol:</strong> Managed through balanced nutrition and meal timing
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="good-foods">
+                        <h3>🟢 Hormone-Supporting Foods</h3>
+                        <div class="food-tags">
+                            <span class="food-tag good">Avocados</span>
+                            <span class="food-tag good">Olive Oil</span>
+                            <span class="food-tag good">Nuts</span>
+                            <span class="food-tag good">Fatty Fish</span>
+                            <span class="food-tag good">Cruciferous Vegetables</span>
+                            <span class="food-tag good">Dark Chocolate</span>
+                        </div>
+                    </div>
+                    
+                    <div class="avoid-foods">
+                        <h3>🔴 Hormone-Disrupting Foods</h3>
+                        <div class="food-tags">
+                            <span class="food-tag avoid">Excessive Sugar</span>
+                            <span class="food-tag avoid">Processed Foods</span>
+                            <span class="food-tag avoid">Excessive Alcohol</span>
+                            <span class="food-tag avoid">Trans Fats</span>
+                            <span class="food-tag avoid">High Soy Intake</span>
+                            <span class="food-tag avoid">Chronic Undereating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Inflammation -->
+        <section class="body-system inflammation">
+            <div class="system-header">
+                <div class="system-icon inflammation">🔥</div>
+                <div>
+                    <h2 class="system-title">Inflammation</h2>
+                    <p class="system-subtitle">How food choices impact your body's inflammatory response</p>
+                </div>
+            </div>
+            
+            <div class="system-content">
+                <div class="system-info">
+                    <h3>Understanding Inflammation</h3>
+                    <p>Inflammation is your body's natural response to injury or stress. While acute inflammation is beneficial for healing, chronic inflammation can hinder recovery, increase injury risk, and impair performance.</p>
+                    
+                    <div class="food-impact">
+                        <h3>Food's Impact on Inflammation</h3>
+                        <ul class="impact-list">
+                            <li>
+                                <span class="impact-icon">🫐</span>
+                                <div class="impact-text">
+                                    <strong>Antioxidants:</strong> Neutralize free radicals and reduce oxidative stress
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">🐟</span>
+                                <div class="impact-text">
+                                    <strong>Omega-3 fatty acids:</strong> Powerful anti-inflammatory compounds
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">🌿</span>
+                                <div class="impact-text">
+                                    <strong>Polyphenols:</strong> Plant compounds that reduce inflammatory markers
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">🥬</span>
+                                <div class="impact-text">
+                                    <strong>Fiber:</strong> Supports gut health and reduces systemic inflammation
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="good-foods">
+                        <h3>🟢 Anti-Inflammatory Foods</h3>
+                        <div class="food-tags">
+                            <span class="food-tag good">Berries</span>
+                            <span class="food-tag good">Fatty Fish</span>
+                            <span class="food-tag good">Leafy Greens</span>
+                            <span class="food-tag good">Turmeric</span>
+                            <span class="food-tag good">Ginger</span>
+                            <span class="food-tag good">Green Tea</span>
+                        </div>
+                    </div>
+                    
+                    <div class="avoid-foods">
+                        <h3>🔴 Pro-Inflammatory Foods</h3>
+                        <div class="food-tags">
+                            <span class="food-tag avoid">Processed Meats</span>
+                            <span class="food-tag avoid">Refined Sugar</span>
+                            <span class="food-tag avoid">Trans Fats</span>
+                            <span class="food-tag avoid">Excessive Omega-6 Oils</span>
+                            <span class="food-tag avoid">High-Sodium Foods</span>
+                            <span class="food-tag avoid">Excessive Alcohol</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Recovery -->
+        <section class="body-system recovery">
+            <div class="system-header">
+                <div class="system-icon recovery">🔄</div>
+                <div>
+                    <h2 class="system-title">Recovery</h2>
+                    <p class="system-subtitle">How nutrition accelerates healing and adaptation</p>
+                </div>
+            </div>
+            
+            <div class="system-content">
+                <div class="system-info">
+                    <h3>The Recovery Process</h3>
+                    <p>Recovery involves repairing damaged tissue, replenishing energy stores, and adapting to training stress. Proper nutrition provides the raw materials and signals needed for optimal recovery between workouts.</p>
+                    
+                    <div class="food-impact">
+                        <h3>Nutritional Recovery Factors</h3>
+                        <ul class="impact-list">
+                            <li>
+                                <span class="impact-icon">🥩</span>
+                                <div class="impact-text">
+                                    <strong>Protein synthesis:</strong> Repairs and builds stronger muscle tissue
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">🍌</span>
+                                <div class="impact-text">
+                                    <strong>Glycogen replenishment:</strong> Restores energy for next workout
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">💧</span>
+                                <div class="impact-text">
+                                    <strong>Rehydration:</strong> Restores fluid balance and nutrient transport
+                                </div>
+                            </li>
+                            <li>
+                                <span class="impact-icon">🛡️</span>
+                                <div class="impact-text">
+                                    <strong>Immune support:</strong> Prevents overtraining and illness
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="good-foods">
+                        <h3>🟢 Recovery-Boosting Foods</h3>
+                        <div class="food-tags">
+                            <span class="food-tag good">Chocolate Milk</span>
+                            <span class="food-tag good">Tart Cherry Juice</span>
+                            <span class="food-tag good">Sweet Potatoes</span>
+                            <span class="food-tag good">Greek Yogurt</span>
+                            <span class="food-tag good">Watermelon</span>
+                            <span class="food-tag good">Quinoa</span>
+                        </div>
+                    </div>
+                    
+                    <div class="avoid-foods">
+                        <h3>🔴 Foods That Impair Recovery</h3>
+                        <div class="food-tags">
+                            <span class="food-tag avoid">Excessive Alcohol</span>
+                            <span class="food-tag avoid">High-Sugar Foods</span>
+                            <span class="food-tag avoid">Processed Foods</span>
+                            <span class="food-tag avoid">Inadequate Protein</span>
+                            <span class="food-tag avoid">Dehydrating Foods</span>
+                            <span class="food-tag avoid">Late-Night Heavy Meals</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="key-takeaways">
+            <h2>🎯 Key Takeaways</h2>
+            <div class="takeaways-grid">
+                <div class="takeaway-item">
+                    <div class="takeaway-icon">🕐</div>
+                    <h3 class="takeaway-title">Timing Matters</h3>
+                    <p class="takeaway-text">When you eat is almost as important as what you eat. Strategic meal timing optimizes energy, performance, and recovery.</p>
+                </div>
+                
+                <div class="takeaway-item">
+                    <div class="takeaway-icon">🌈</div>
+                    <h3 class="takeaway-title">Variety is Key</h3>
+                    <p class="takeaway-text">Different foods provide different benefits. Eat a colorful variety to ensure you're getting all the nutrients your body needs.</p>
+                </div>
+                
+                <div class="takeaway-item">
+                    <div class="takeaway-icon">⚖️</div>
+                    <h3 class="takeaway-title">Balance Over Perfection</h3>
+                    <p class="takeaway-text">Focus on overall dietary patterns rather than perfect individual meals. Consistency beats perfection every time.</p>
+                </div>
+                
+                <div class="takeaway-item">
+                    <div class="takeaway-icon">🎯</div>
+                    <h3 class="takeaway-title">Individual Response</h3>
+                    <p class="takeaway-text">Everyone responds differently to foods. Pay attention to how different foods make you feel and perform.</p>
+                </div>
+            </div>
+        </section>
+        
+        <div class="navigation-buttons">
+            <a href="macronutrients-101.html" class="nav-button prev">
+                <i class="fas fa-arrow-left"></i> Macronutrients 101
+            </a>
+            <a href="healthy-eating-basics.html" class="nav-button next">
+                Healthy Eating Basics <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Add smooth scrolling animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all body system sections
+        document.querySelectorAll('.body-system').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+        
+        // Add hover effects to food tags
+        document.querySelectorAll('.food-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
